@@ -49,3 +49,25 @@ This project is an **AI-based virtual scientific calculator** that uses **hand g
 1. Clone the repository:
    ```bash
    git clone <repository-url>
+   Navigate to the project directory:
+
+cd AI-Based-Virtual-Scientific-Calculator
+
+
+Install required dependencies:
+
+pip install -r requirements.txt
+
+
+Run the Flask app:
+
+python app.py
+
+
+Open your browser and go to:
+
+http://127.0.0.1:5000
+
+
+
+<img width="1371" height="782" alt="image" src="https://github.com/user-attachments/assets/4b60480f-f8e4-4165-8677-25e3b9c7b877" />
