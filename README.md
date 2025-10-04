@@ -71,3 +71,5 @@ http://127.0.0.1:5000
 
 
 <img width="1371" height="782" alt="image" src="https://github.com/user-attachments/assets/4b60480f-f8e4-4165-8677-25e3b9c7b877" />
+<img width="1280" height="686" alt="image" src="https://github.com/user-attachments/assets/a65f1ed1-efe4-48f8-a169-0adc0dc83f6c" />
+
