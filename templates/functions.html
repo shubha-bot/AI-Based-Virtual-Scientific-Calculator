@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Button Functions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1A2930 0%, #0F161A 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      color: #E0E0E0;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      font-weight: 300;
+      color: #E0E0E0;
+      text-shadow: 0 0 10px rgba(0, 192, 255, 0.4);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 900px;
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(108, 99, 255, 0.3);
+      margin-bottom: 50px;
+    }
+
+    th, td {
+      padding: 18px 25px;
+      text-align: left;
+      transition: all 0.3s ease-in-out;
+    }
+
+    th {
+      background: linear-gradient(90deg, #6C63FF, #A36CFF);
+      color: white;
+      font-size: 1.2em;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    tr:nth-child(odd) {
+      background-color: #F8F8F8;
+    }
+
+    tr:nth-child(even) {
+      background-color: #FFFFFF;
+    }
+
+    /* Hover on table row (subtle) */
+    tr:hover {
+      transform: scale(1.01);
+      box-shadow: inset 5px 0 0 #6C63FF;
+    }
+
+    /* Individual cell hover with strong contrast */
+    td {
+      position: relative;
+      background-color: inherit;
+      color: #1A1A1A; /* Make text darker by default */
+    }
+
+    td:hover {
+      background-color: #6C63FF; /* Dark purple background for hover */
+      color: #FFFFFF; /* White text for contrast */
+      font-weight: 600;
+      cursor: pointer;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .btn {
+      text-decoration: none;
+      background-color: #A36CFF;
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-size: 1.1em;
+      font-weight: 700;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .btn:hover {
+      background-color: #8C5EFF;
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(163, 108, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <h1>Button Functions</h1>
+  <table>
+    <tr><th>Button</th><th>Description</th></tr>
+    {% for label, desc in buttons %}
+      <tr>
+        <td>{{ label }}</td>
+        <td>{{ desc }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a class="btn" href="{{ url_for('calculator') }}">Next → Calculator</a>
+</body>
+</html>

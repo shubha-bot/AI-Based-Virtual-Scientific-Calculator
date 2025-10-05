@@ -1,0 +1,10 @@
+body { font-family: Arial, sans-serif; text-align:center; margin:30px; }
+.card { width:320px; margin:40px auto; padding:20px; border:1px solid #ddd; border-radius:8px; }
+input { width:90%; padding:8px; margin:6px 0; }
+button { padding:8px 16px; margin:6px; }
+.profiles { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+.profile img { width:140px; height:140px; border-radius:50%; object-fit:cover; border:2px solid #666; }
+.profile p { margin-top:8px; }
+table { margin:0 auto; border-collapse:collapse; width:70%; }
+table, th, td { border:1px solid #aaa; padding:8px; }
+.btn { display:inline-block; margin:12px; padding:8px 14px; background:#2d89ef; color:white; text-decoration:none; border-radius:6px; }

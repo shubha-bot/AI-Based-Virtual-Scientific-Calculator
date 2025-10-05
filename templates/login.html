@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <style>
+    /* Reset styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+  /* Existing CSS for body */
+body {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* NOTE: Ensure this path is correct in your Flask application */
+    background-image: url('{{ url_for("static", filename="images/login_bg.jpg") }}');
+    /* CHANGE THIS LINE:
+       From: background-size: 50% auto;
+       To:   background-size: cover;
+    */
+    background-size: cover; /* CHANGED to cover the entire screen */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+    /* Semi-transparent overlay for readability */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        z-index: 0;
+    }
+
+    .card {
+        position: relative;
+        z-index: 1;
+        /* Login block is fully transparent */
+        background: transparent;
+        padding: 40px 50px;
+        border-radius: 15px;
+        box-shadow: none;
+        width: 350px;
+        text-align: center;
+    }
+
+    .card h2 {
+        margin-bottom: 30px;
+        color: #fff; /* White text for visibility */
+        font-size: 28px;
+    }
+
+    /* Autofill fix for Chrome/Safari */
+    .card input:-webkit-autofill,
+    .card input:-webkit-autofill:hover,
+    .card input:-webkit-autofill:focus,
+    .card input:-webkit-autofill:active {
+        /* Use a transparent box-shadow to override the browser's background style */
+        -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+        /* Force the text color to remain semi-transparent white */
+        -webkit-text-fill-color: rgba(255, 255, 255, 0.7) !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .card input {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        /* Input background is transparent */
+        background: transparent;
+        /* Subtle white border */
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        font-size: 16px;
+        /* Input text color is semi-transparent white */
+        color: rgba(255, 255, 255, 0.7);
+        transition: 0.3s;
+    }
+
+    /* Placeholder color to match input text color */
+    .card input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .card input:focus {
+        border-color: #2575fc;
+        outline: none;
+        box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+    }
+
+    .card button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        /* Button background is transparent */
+        background: transparent;
+        /* White border for the button */
+        border: 2px solid white;
+        border-radius: 8px;
+        /* Button text is white */
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .card button:hover {
+        /* Subtle white background on hover */
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #2575fc;
+    }
+
+    .card p {
+        margin-top: 15px;
+        font-size: 14px;
+        color: red; /* Keep error message red */
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Login</h2>
+    <form method="post">
+      <input type="text" name="username" placeholder="Username" required><br>
+      <input type="password" name="password" placeholder="Password" required autocomplete="on"><br>
+      <button type="submit">Login</button>
+    </form>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>

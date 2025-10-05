@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Project Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      margin: 0;
+      padding: 0;
+      color: #f0f0f0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 40px 20px 10px 20px;
+      font-size: 3rem;
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 138, 0, 0.5);
+    }
+
+    .project-description {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 0 auto 50px auto;
+      max-width: 700px;
+      line-height: 1.6;
+      color: #d1d1d1;
+    }
+
+    /* Mentor Card */
+    .mentor-card {
+      width: 270px;
+      margin: 0 auto 50px auto;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #ff8a00;
+      border-radius: 20px;
+      text-align: center;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(255, 138, 0, 0.5);
+      transform: translateY(-20px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .mentor-card:hover {
+      transform: translateY(-25px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 138, 0, 0.7);
+    }
+
+    .mentor-card img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #ff8a00;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .mentor-card b {
+      color: #ff8a00;
+      font-size: 1.2rem;
+    }
+
+    /* Team Profiles */
+    .profiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .profile {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #00fff0;
+      border-radius: 20px;
+      width: 200px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 255, 240, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .profile:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 255, 240, 0.6);
+      border-color: #00fff0;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 3px solid #00fff0;
+    }
+
+    .profile p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #f0f0f0;
+    }
+
+    .profile b {
+      color: #00fff0;
+      font-size: 1rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin: 20px 10px;
+      padding: 12px 25px;
+      background: #ff8a00;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(255, 138, 0, 0.5);
+    }
+
+    .btn:hover {
+      background: #e52e71;
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(229, 46, 113, 0.6);
+    }
+
+    @media screen and (max-width: 768px) {
+      .profiles {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .mentor-card {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>AI-based Virtual Scientific Calculator</h1>
+  <p class="project-description">
+    Presenting <b>AI-based Virtual Scientific Calculator</b>, an innovative project using hand gestures. Under the guidance of <b>Dr. Dinesh Chandra Dobhal</b> and led by <b>Shubham Raj (ID: 2103782)</b>, the project team includes
+    <b>Yash Garg</b> and <b>Aman Bijalwan</b>.
+  </p>
+
+  <!-- Mentor Highlight -->
+  <div class="mentor-card">
+    <img src="{{ url_for('static', filename=info.mentor.img) }}" alt="Mentor">
+    <p><b>Mentor</b><br>Dr. Dinesh Chandra Dobhal<br>Faculty of Computer Science</p>
+  </div>
+
+  <!-- Team Members -->
+  <div class="profiles">
+    <div class="profile">
+      <img src="{{ url_for('static', filename=info.leader.img) }}" alt="Leader">
+      <p><b>Team Leader</b><br>Shubham Raj<br>ID: 231512775</p>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename=info.members[0].img) }}" alt="Member1">
+      <p><b>Team Member</b><br>Yash Garg<br>ID:23151074</p>
+    </div>
+
+    <div class="profile">
+      <img src="{{ url_for('static', filename=info.members[1].img) }}" alt="Member2">
+      <p><b>Team Member</b><br>Aman Bijalwan<br>ID:23151408</p>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <a class="btn" href="{{ url_for('functions') }}">Next → Functions</a>
+    <a class="btn" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+
+</body>
+
+</html>

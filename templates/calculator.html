@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 40px;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(108, 99, 255, 0.8);
+      text-align: center;
+    }
+
+    /* Button styling */
+    button, .btn {
+      background: linear-gradient(90deg, #6C63FF, #A36CFF);
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 15px 40px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+    }
+
+    button:hover, .btn:hover {
+      background: linear-gradient(90deg, #8C5EFF, #C49CFF);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(108, 99, 255, 0.7), 0 0 20px rgba(163, 108, 255, 0.5);
+    }
+
+    /* Status display */
+    #status {
+      font-size: 1.3em;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(108, 99, 255, 0.5);
+      transition: all 0.4s ease;
+    }
+
+    #status.running {
+      background-color: #28a745;
+      color: white;
+      box-shadow: 0 0 20px #28a745;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    #status.stopped {
+      background-color: #dc3545;
+      color: white;
+      box-shadow: 0 0 20px #dc3545;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 15px currentColor; }
+      to { box-shadow: 0 0 35px currentColor; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Scientific Calculator</h1>
+
+  <button id="runBtn">Run Calculator</button>
+  <button id="stopBtn">Stop Calculator</button>
+
+  <p id="status" class="{{ 'running' if running else 'stopped' }}">
+    {{ 'Running' if running else 'Not Running' }}
+  </p>
+
+  <a class="btn" href="{{ url_for('details') }}">← Back to Details</a>
+
+  <script>
+    const statusEl = document.getElementById('status');
+
+    async function updateStatus(running) {
+      statusEl.textContent = running ? 'Running' : 'Not Running';
+      statusEl.className = running ? 'running' : 'stopped';
+    }
+
+    document.getElementById('runBtn').addEventListener('click', async () => {
+      await fetch('{{ url_for("run_calc") }}', { method: 'POST' });
+      updateStatus(true);
+    });
+
+    document.getElementById('stopBtn').addEventListener('click', async () => {
+      await fetch('{{ url_for("stop_calc") }}', { method: 'POST' });
+      updateStatus(false);
+    });
+  </script>
+</body>
+</html>
